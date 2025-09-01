@@ -1,6 +1,6 @@
 from config.settings import settings
 from bot.handlers import setup_bot
-from oanda.client import get_client
+from oanda import OandaClient
 
 
 def main() -> None:
@@ -10,7 +10,7 @@ def main() -> None:
 
     # Initialize Oanda client (not used yet)
     if settings.oanda_token:
-        get_client(settings.oanda_token)
+        OandaClient(settings.oanda_token)
 
     application = setup_bot(settings.telegram_token)
     application.run_polling()
